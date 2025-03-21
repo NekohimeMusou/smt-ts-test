@@ -1,0 +1,44 @@
+{
+  "id": "smt-ts-test",
+  "title": "SMT RPG: TS Types Test",
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": 12,
+    "verified": 12
+  },
+
+  "authors": [
+    {
+      "name": "Nekohime Musou",
+      "url": "https://github.com/NekohimeMusou",
+      "discord": "nekohime.musou"
+    }
+  ],
+
+  "esmodules": ["module/smt-tc.js"],
+  "styles": ["styles/smt-ts-test.css", "styles/smt-ts-test-supplemental.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+
+  "documentTypes": {
+    "Actor": {
+      "character": { "htmlFields": ["notes"] }
+    },
+    "Item": {
+      "inventoryItem": { "htmlFields": ["description"] }
+    }
+  },
+
+  "initiative": "1d10x + @ag",
+  "grid": {
+    "distance": 2,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "hp",
+  "secondaryTokenAttribute": "mp"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "smt-ts-test",
+  "version": "1.0.0",
+  "description": "TS Types Test",
+  "private": true,
+  "homepage": "https://github.com/NekohimeMusou/smt-ts-test#readme",
+  "bugs": {
+    "url": "https://github.com/NekohimeMusou/smt-ts-test/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekohimeMusou/smt-ts-test.git"
+  },
+  "license": "ISC",
+  "author": "Nekohime Musou",
+  "type": "module",
+  "main": "src/smt-ts-test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "trash dist/**/* && tsc && copyfiles -u 1 src/**/*.css src/**/*.json dist/"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@foundryvtt/foundryvtt-cli": "^1.0.4",
+    "copyfiles": "^2.4.1",
+    "eslint": "^9.23.0",
+    "fvtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types#documents-v2",
+    "prettier": "3.5.3",
+    "trash-cli": "^6.0.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.27.0"
+  }
+}
