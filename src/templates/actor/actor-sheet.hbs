@@ -1,0 +1,24 @@
+<form class="flexcol {{cssClass}} {{actor.type}} smt-sheet" autocomplete="off">
+  {{!-- Sheet Header --}}
+  {{> "systems/smt-ts-test/templates/parts/actor/header.hbs" }}
+
+  {{!-- Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    {{!-- Default tab is defined in actor-sheet.ts --}}
+    <a class="item resource-label" data-tab="main">{{localize "SMT.tabs.main"}}</a>
+    <a class="item resource-label" data-tab="bio">{{localize "SMT.tabs.bio"}}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Main Tab --}}
+    <div class="tab main" data-group="primary" data-tab="main">
+      {{> "systems/smt-ts-test/templates/parts/actor/main.hbs"}}
+    </div>
+
+    {{!-- Bio Tab --}}
+    <div class="tab bio" data-group="primary" data-tab="bio">
+      {{> "systems/smt-ts-test/templates/parts/actor/bio.hbs"}}
+    </div>
+  </section>
+</form>

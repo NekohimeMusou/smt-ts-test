@@ -14,5 +14,17 @@ export default tseslint.config(
   {
     files: ["eslint.config.mjs"],
     extends: [tseslint.configs.disableTypeChecked],
+  },
+  {
+    rules: {
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          checksVoidReturn: {
+            arguments: false,
+          },
+        },
+      ],
+    },
   }
 );

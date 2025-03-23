@@ -1,0 +1,13 @@
+<form class="{{cssClass}} smt-sheet" autocomplete="off">
+  {{> "systems/smt-ts-test/templates/parts/item/header.hbs"}}
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item resource-label" data-tab="details">{{localize "SMT.tabs.details"}}</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab details" data-group="primary" data-tab="details">
+      {{> "systems/smt-ts-test/templates/parts/item/item/details.hbs"}}
+    </div>
+  </section>
+</form>

@@ -15,7 +15,7 @@
     }
   ],
 
-  "esmodules": ["module/smt-tc.js"],
+  "esmodules": ["module/smt-ts-test.js"],
   "styles": ["styles/smt-ts-test.css", "styles/smt-ts-test-supplemental.css"],
   "languages": [
     {

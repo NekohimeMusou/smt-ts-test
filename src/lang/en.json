@@ -18,6 +18,16 @@
       "addItem": "Add Item",
       "editItem": "Edit Item",
       "deleteItem": "Delete Item"
+    },
+    "tabs": {
+      "main": "Main",
+      "bio": "Bio",
+      "details": "Details"
+    },
+    "resources": {
+      "hp": "HP",
+      "mp": "MP",
+      "fp": "FP"
     }
   },
   "TYPES": {

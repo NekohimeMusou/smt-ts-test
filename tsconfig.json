@@ -5,15 +5,15 @@
   "compilerOptions": {
     "types": ["fvtt-types"],
     "target": "ES2024",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "module": "Node16",
+    "moduleResolution": "node16",
 
     "rootDir": "src",
     "outDir": "dist",
 
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "allowUmdGlobalAccess": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,

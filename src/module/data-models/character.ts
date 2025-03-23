@@ -1,4 +1,4 @@
-import { SmtActor } from "../documents/actor";
+import { SmtActor } from "../documents/actor/actor.js";
 
 declare global {
   interface DocumentClassConfig {
@@ -18,10 +18,12 @@ const characterSchema = {
   hp: new fields.SchemaField({
     max: new fields.NumberField({ integer: true }),
     value: new fields.NumberField({ integer: true }),
+    multiplier: new fields.NumberField({ integer: true, initial: 1 }),
   }),
   mp: new fields.SchemaField({
     max: new fields.NumberField({ integer: true }),
     value: new fields.NumberField({ integer: true }),
+    multiplier: new fields.NumberField({ integer: true, initial: 1 }),
   }),
   fp: new fields.SchemaField({
     max: new fields.NumberField({ integer: true }),
