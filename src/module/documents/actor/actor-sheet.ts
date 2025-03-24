@@ -45,31 +45,31 @@ export default class SmtActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  // async #onItemCreate(event: JQuery.ClickEvent) {
-  //   event.preventDefault();
-  //   const element = $(event.currentTarget);
-  //   // Get the type of item to create.
-  //   const system = element.data();
-  //   // Grab any data associated with this control.
-  //   const itemType = system.itemType as string;
-  //   // Initialize a default name.
-  //   const name = itemType.replace(/\b\w+/g, function (s) {
-  //     return s.charAt(0).toUpperCase() + s.substring(1).toLowerCase();
-  //   });
-  //   const itemName = `${getGame().i18n.format("SMT.sheet.newItem", { name })}`;
-  //   // Prepare the item object.
-  //   const itemData = {
-  //     name: itemName,
-  //     type: itemType,
-  //     system,
-  //   };
-  //   // Remove the type from the dataset since it's in the itemData.type prop.
-  //   delete itemData.system.itemType;
+  async #onItemCreate(event: JQuery.ClickEvent) {
+    event.preventDefault();
+    const element = $(event.currentTarget);
+    // Get the type of item to create.
+    const system = element.data();
+    // Grab any data associated with this control.
+    const itemType = system.itemType as string;
+    // Initialize a default name.
+    const name = itemType.replace(/\b\w+/g, function (s) {
+      return s.charAt(0).toUpperCase() + s.substring(1).toLowerCase();
+    });
+    const itemName = `${getGame().i18n.format("SMT.sheet.newItem", { name })}`;
+    // Prepare the item object.
+    const itemData = {
+      name: itemName,
+      type: itemType,
+      system,
+    };
+    // Remove the type from the dataset since it's in the itemData.type prop.
+    delete itemData.system.itemType;
 
-  //   // Finally, create the item!
-  //   this.actor.items.createDocument([itemData], {})
-  //   await this.actor.createEmbeddedDocuments("Item", [itemData]);
-  // }
+    // Finally, create the item!
+    // @ts-expect-error Bug in fvtt-types
+    await this.actor.createEmbeddedDocuments("Item", [itemData]);
+  }
 
   async #onItemDelete(event: JQuery.ClickEvent) {
     const li = $(event.currentTarget).parents(".item");
