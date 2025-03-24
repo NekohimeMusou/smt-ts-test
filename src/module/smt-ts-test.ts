@@ -15,6 +15,7 @@ declare global {
   interface Game {
     smt: {
       SmtActor: typeof SmtActor;
+      SmtItem: typeof SmtItem;
     };
   }
 }
@@ -33,7 +34,7 @@ Hooks.once("init", async () => {
   // Global configuration
   CONFIG.ActiveEffect.legacyTransferral = false;
   CONFIG.SMT = SMT;
-  game.smt = { SmtActor };
+  game.smt = { SmtActor, SmtItem };
 
   registerDataModels();
   registerDocumentClasses();
