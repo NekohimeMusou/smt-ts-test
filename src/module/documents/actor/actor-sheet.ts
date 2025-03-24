@@ -1,4 +1,5 @@
 import { getGame } from "../../smt-ts-test.js";
+import { prepareActiveEffectCategories } from "../active-effect/helpers.js";
 
 export default class SmtActorSheet extends ActorSheet {
   static override get defaultOptions() {
@@ -15,6 +16,28 @@ export default class SmtActorSheet extends ActorSheet {
         },
       ],
     });
+  }
+
+  override async getData() {
+    const context = super.getData();
+    const system = this.actor.system;
+    const rollData = this.actor.getRollData();
+
+    const items = this.actor.items.filter(
+      (item) => item.type === "inventoryItem"
+    );
+
+    const effects = prepareActiveEffectCategories(this.actor.effects);
+
+    await foundry.utils.mergeObject(context, {
+      system,
+      rollData,
+      items,
+      effects,
+      SMT: CONFIG.SMT,
+    });
+
+    return context;
   }
 
   override activateListeners(html: JQuery<HTMLElement>) {
@@ -34,7 +57,7 @@ export default class SmtActorSheet extends ActorSheet {
     if (!this.isEditable) return;
 
     // Add Inventory Item
-    // html.find(".item-create").on("click", this.#onItemCreate.bind(this));
+    html.find(".item-create").on("click", this.#onItemCreate.bind(this));
 
     // Delete Inventory Item
     html.find(".item-delete").on("click", this.#onItemDelete.bind(this));

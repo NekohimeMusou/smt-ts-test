@@ -6,4 +6,6 @@ export const templatePaths = [
 
   "systems/smt-ts-test/templates/parts/item/header.hbs",
   "systems/smt-ts-test/templates/parts/item/details.hbs",
+
+  "systems/smt-ts-test/templates/parts/effects.hbs",
 ];
