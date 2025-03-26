@@ -64,6 +64,8 @@ export class SmtCharacterData extends foundry.abstract.TypeDataModel<
     // Type of stPlus is `number`
     // `this.stats.st.value`: "Object is possibly null or undefined"
     const stPlus = this.stats.st.value + 1;
+
+    // No error here
     return this.stats.st.value;
   }
 
