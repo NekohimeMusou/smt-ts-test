@@ -61,6 +61,7 @@ const characterSchema = {
       value: new fields.NumberField({ integer: true, min: 1 }),
     }),
   }),
+  lv: new fields.NumberField({ integer: true, min: 1, initial: 1 }),
   notes: new fields.HTMLField(),
 } satisfies foundry.data.fields.DataSchema;
 
