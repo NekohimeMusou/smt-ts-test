@@ -25,36 +25,8 @@ const characterSchema = {
     value: new fields.NumberField({ integer: true }),
     multiplier: new fields.NumberField({ integer: true, initial: 1 }),
   }),
-  fp: new fields.SchemaField({
-    max: new fields.NumberField({ integer: true }),
-    value: new fields.NumberField({ integer: true }),
-  }),
   stats: new fields.SchemaField({
     st: new fields.SchemaField({
-      base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
-      lv: new fields.NumberField({ integer: true, min: 0 }),
-      mgt: new fields.NumberField({ integer: true, min: 0 }),
-      value: new fields.NumberField({ integer: true, min: 1 }),
-    }),
-    ma: new fields.SchemaField({
-      base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
-      lv: new fields.NumberField({ integer: true, min: 0 }),
-      mgt: new fields.NumberField({ integer: true, min: 0 }),
-      value: new fields.NumberField({ integer: true, min: 1 }),
-    }),
-    vi: new fields.SchemaField({
-      base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
-      lv: new fields.NumberField({ integer: true, min: 0 }),
-      mgt: new fields.NumberField({ integer: true, min: 0 }),
-      value: new fields.NumberField({ integer: true, min: 1 }),
-    }),
-    ag: new fields.SchemaField({
-      base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
-      lv: new fields.NumberField({ integer: true, min: 0 }),
-      mgt: new fields.NumberField({ integer: true, min: 0 }),
-      value: new fields.NumberField({ integer: true, min: 1 }),
-    }),
-    lu: new fields.SchemaField({
       base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
       lv: new fields.NumberField({ integer: true, min: 0 }),
       mgt: new fields.NumberField({ integer: true, min: 0 }),
@@ -69,23 +41,29 @@ export class SmtCharacterData extends foundry.abstract.TypeDataModel<
   typeof characterSchema,
   SmtActor
 > {
+  // This behavior occurs in other instance methods like prepareBaseData as well
+  // And in the Actor and ActorSheet classes.
   get st() {
-    return this.stats.st.value;
-  }
+    /**
+     * Mystery of the Missing Types
+     */
 
-  get ma() {
-    return this.stats.st.value;
-  }
+    // Type of this.lv is `any`
+    // Triggers eslint no-unsafe-assignment
+    const level = this.lv;
+    /**
+     * Null or Undefined Schema Attributes
+     */
 
-  get vi() {
-    return this.stats.st.value;
-  }
-
-  get ag() {
-    return this.stats.st.value;
-  }
-
-  get lu() {
+    // Type of st is NumberField.InitializedType<{
+    //     readonly integer: true;
+    //     readonly min: 1;
+    // }>
+    // No error here
+    const st = this.stats.st.value;
+    // Type of stPlus is `number`
+    // `this.stats.st.value`: "Object is possibly null or undefined"
+    const stPlus = this.stats.st.value + 1;
     return this.stats.st.value;
   }
 

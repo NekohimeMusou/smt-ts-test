@@ -1,5 +1,3 @@
-import { getGame } from "../../smt-ts-test.js";
-
 export default class SmtActorSheet extends ActorSheet {
   static override get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -22,17 +20,18 @@ export default class SmtActorSheet extends ActorSheet {
     const system = this.actor.system;
     const rollData = this.actor.getRollData();
 
-    const items = this.actor.items.filter(
-      (item) => item.type === "inventoryItem"
-    );
-
+    // Same issue here
     const test = system.lv;
+
+    // Type of st is NumberField.InitializedType<{
+    //     readonly integer: true;
+    //     readonly min: 1;
+    // }>
+    const st = system.st;
 
     await foundry.utils.mergeObject(context, {
       system,
       rollData,
-      items,
-      SMT: CONFIG.SMT,
     });
 
     return context;

@@ -1,15 +1,11 @@
 import { SmtCharacterData } from "./data-models/actor/character.js";
-import { SmtItemData } from "./data-models/item/inventoryItem.js";
 import SmtActorSheet from "./documents/actor/actor-sheet.js";
 import { SmtActor } from "./documents/actor/actor.js";
-import SmtItemSheet from "./documents/item/item-sheet.js";
-import { SmtItem } from "./documents/item/item.js";
 
 declare global {
   interface Game {
     smt: {
       SmtActor: typeof SmtActor;
-      SmtItem: typeof SmtItem;
     };
   }
 }
@@ -27,7 +23,7 @@ Hooks.once("init", () => {
 
   // Global configuration
   CONFIG.ActiveEffect.legacyTransferral = false;
-  game.smt = { SmtActor, SmtItem };
+  game.smt = { SmtActor };
 
   registerDataModels();
   registerDocumentClasses();
@@ -38,27 +34,16 @@ function registerDataModels() {
   CONFIG.Actor.dataModels = {
     character: SmtCharacterData,
   };
-
-  CONFIG.Item.dataModels = {
-    inventoryItem: SmtItemData,
-  };
 }
 
 function registerDocumentClasses() {
   CONFIG.Actor.documentClass = SmtActor;
-  CONFIG.Item.documentClass = SmtItem;
 }
 
 function registerSheetApplications() {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("smt-ts-test", SmtActorSheet, {
     types: ["character"],
-    makeDefault: true,
-  });
-
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("smt-ts-test", SmtItemSheet, {
-    types: ["inventoryItem"],
     makeDefault: true,
   });
 }
