@@ -7,7 +7,7 @@ declare global {
 
   interface DataModelConfig {
     Actor: {
-      character: SmtCharacterData;
+      character: typeof SmtCharacterData;
     };
   }
 }
@@ -36,9 +36,33 @@ const characterSchema = {
       mgt: new fields.NumberField({ integer: true, min: 0 }),
       value: new fields.NumberField({ integer: true, min: 1 }),
     }),
+    ma: new fields.SchemaField({
+      base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
+      lv: new fields.NumberField({ integer: true, min: 0 }),
+      mgt: new fields.NumberField({ integer: true, min: 0 }),
+      value: new fields.NumberField({ integer: true, min: 1 }),
+    }),
+    vi: new fields.SchemaField({
+      base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
+      lv: new fields.NumberField({ integer: true, min: 0 }),
+      mgt: new fields.NumberField({ integer: true, min: 0 }),
+      value: new fields.NumberField({ integer: true, min: 1 }),
+    }),
+    ag: new fields.SchemaField({
+      base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
+      lv: new fields.NumberField({ integer: true, min: 0 }),
+      mgt: new fields.NumberField({ integer: true, min: 0 }),
+      value: new fields.NumberField({ integer: true, min: 1 }),
+    }),
+    lu: new fields.SchemaField({
+      base: new fields.NumberField({ integer: true, initial: 1, min: 1 }),
+      lv: new fields.NumberField({ integer: true, min: 0 }),
+      mgt: new fields.NumberField({ integer: true, min: 0 }),
+      value: new fields.NumberField({ integer: true, min: 1 }),
+    }),
   }),
   notes: new fields.HTMLField(),
-} as const;
+} satisfies foundry.data.fields.DataSchema;
 
 export class SmtCharacterData extends foundry.abstract.TypeDataModel<
   typeof characterSchema,

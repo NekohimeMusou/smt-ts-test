@@ -1,1 +1,1 @@
-export class SmtItem extends Item {}
+export class SmtItem extends Item<"inventoryItem"> {}

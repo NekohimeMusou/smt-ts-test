@@ -16,7 +16,7 @@ const fields = foundry.data.fields;
 
 const itemSchema = {
   description: new fields.HTMLField(),
-} as const;
+} satisfies foundry.data.fields.DataSchema;
 
 export class SmtItemData extends foundry.abstract.TypeDataModel<
   typeof itemSchema,

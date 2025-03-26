@@ -1,1 +1,1 @@
-export class SmtActor extends Actor {}
+export class SmtActor extends Actor<"character"> {}
