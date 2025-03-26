@@ -1,5 +1,5 @@
 import { SmtCharacterData } from "./data-models/actor/character.js";
-import SmtActorSheet from "./documents/actor/actor-sheet.js";
+import { SmtActorSheet } from "./documents/actor/actor-sheet.js";
 import { SmtActor } from "./documents/actor/actor.js";
 
 declare global {

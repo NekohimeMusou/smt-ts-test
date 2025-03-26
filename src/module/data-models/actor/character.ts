@@ -41,8 +41,8 @@ export class SmtCharacterData extends foundry.abstract.TypeDataModel<
   typeof characterSchema,
   SmtActor
 > {
-  // This behavior occurs in other instance methods like prepareBaseData as well
-  // And in the Actor and ActorSheet classes.
+  // Accessing the system object from e.g. the Actor or ActorSheet classes seems to
+  // result in the same behavior
   get st() {
     /**
      * Mystery of the Missing Types
