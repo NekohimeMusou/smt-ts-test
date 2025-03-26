@@ -1,4 +1,4 @@
-import { SmtItem } from "../documents/item/item.js";
+import { SmtItem } from "../../documents/item/item.js";
 
 declare global {
   interface DocumentClassConfig {

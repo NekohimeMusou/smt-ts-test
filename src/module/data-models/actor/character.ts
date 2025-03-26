@@ -1,4 +1,4 @@
-import { SmtActor } from "../documents/actor/actor.js";
+import { SmtActor } from "../../documents/actor/actor.js";
 
 declare global {
   interface DocumentClassConfig {

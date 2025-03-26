@@ -1,17 +1,11 @@
-import { SMT } from "./config/config.js";
-import { templatePaths } from "./config/templates.js";
-import { SmtCharacterData } from "./data-models/character.js";
-import { SmtItemData } from "./data-models/inventoryItem.js";
+import { SmtCharacterData } from "./data-models/actor/character.js";
+import { SmtItemData } from "./data-models/item/inventoryItem.js";
 import SmtActorSheet from "./documents/actor/actor-sheet.js";
 import { SmtActor } from "./documents/actor/actor.js";
 import SmtItemSheet from "./documents/item/item-sheet.js";
 import { SmtItem } from "./documents/item/item.js";
 
 declare global {
-  interface CONFIG {
-    SMT: typeof SMT;
-  }
-
   interface Game {
     smt: {
       SmtActor: typeof SmtActor;
@@ -28,18 +22,16 @@ export function getGame(): ReadyGame {
   throw new Error("game not initialized yet!");
 }
 
-Hooks.once("init", async () => {
+Hooks.once("init", () => {
   console.log("SMT-TS | Initializing SMT-TS");
 
   // Global configuration
   CONFIG.ActiveEffect.legacyTransferral = false;
-  CONFIG.SMT = SMT;
   game.smt = { SmtActor, SmtItem };
 
   registerDataModels();
   registerDocumentClasses();
   registerSheetApplications();
-  await preloadHandlebarsTemplates();
 });
 
 function registerDataModels() {
@@ -69,8 +61,4 @@ function registerSheetApplications() {
     types: ["inventoryItem"],
     makeDefault: true,
   });
-}
-
-async function preloadHandlebarsTemplates() {
-  await loadTemplates(templatePaths);
 }
