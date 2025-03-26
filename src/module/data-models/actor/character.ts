@@ -35,7 +35,7 @@ const characterSchema = {
   }),
   lv: new fields.NumberField({ integer: true, min: 1, initial: 1 }),
   notes: new fields.HTMLField(),
-} satisfies foundry.data.fields.DataSchema;
+};
 
 export class SmtCharacterData extends foundry.abstract.TypeDataModel<
   typeof characterSchema,
