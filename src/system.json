@@ -28,9 +28,6 @@
   "documentTypes": {
     "Actor": {
       "character": { "htmlFields": ["notes"] }
-    },
-    "Item": {
-      "inventoryItem": { "htmlFields": ["description"] }
     }
   },
 
